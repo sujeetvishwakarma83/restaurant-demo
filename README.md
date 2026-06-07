@@ -41,11 +41,6 @@ Live Demo:
 </p>
 
 ---
-
-## 🎥 Interactive Demo
-
-![Restaurant Demo GIF](./screenshots/demo.gif)
-
 ---
 
 ## ✨ Features
