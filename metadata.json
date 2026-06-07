@@ -1,0 +1,6 @@
+{
+  "name": "L'Éclat Gastronomy",
+  "description": "An exquisite, luxury fine dining experience presenting the masterpiece gastronomy of Chef Julien de L'Éclat.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
