@@ -10,6 +10,7 @@ export interface MenuItem {
   price: number;
   description: string;
   tags?: string[]; // e.g. ["Vegetarian", "Gluten Free", "Signature"]
+  imageUrl?: string;
 }
 
 export interface Reservation {

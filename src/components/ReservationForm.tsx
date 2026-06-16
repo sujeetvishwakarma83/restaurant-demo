@@ -209,9 +209,9 @@ export const ReservationForm: React.FC = () => {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-gold-400 font-mono text-xs uppercase tracking-[0.35em] block mb-3">La Passerelle des Réservations</span>
-          <h2 className="text-white font-serif text-3xl md:text-5xl font-medium tracking-tight mb-4">Secure a Dining Salon</h2>
-          <p className="text-neutral-400 font-sans text-sm font-light leading-relaxed">
+          <span className="text-gold-500 font-serif text-[13px] uppercase tracking-[0.35em] block mb-3 font-semibold">La Passerelle des Réservations</span>
+          <h2 className="text-neutral-200 font-serif text-[36px] md:text-[46px] font-bold tracking-tight mb-4 leading-none">Secure a Dining Salon</h2>
+          <p className="text-neutral-500 font-sans text-[16px] md:text-[18px] font-normal leading-relaxed">
             Seating at L’Éclat is tightly calculated to protect the sensory space for each guest. Select your salon tier and secure your priority invitation.
           </p>
         </div>
@@ -221,8 +221,8 @@ export const ReservationForm: React.FC = () => {
           
           {/* Reservation Form */}
           <div className="lg:col-span-7">
-            <div className="glass-card p-6 md:p-8 border border-gold-500/10">
-              <span className="text-[10px] text-gold-400 font-mono uppercase tracking-widest block mb-4">★★★★★ Dining Desk Portal</span>
+            <div className="glass-card p-6 md:p-8 border border-neutral-850 bg-neutral-950 rounded-2xl shadow-md">
+              <span className="text-[10px] text-gold-500 font-sans font-semibold uppercase tracking-widest block mb-5">★★★★★ Dining Desk Portal</span>
               
               <form id="booking-form" onSubmit={handleBookTable} className="space-y-6">
                 
@@ -231,58 +231,65 @@ export const ReservationForm: React.FC = () => {
                   
                   {/* Date selection field */}
                   <div className="space-y-1.5">
-                    <label className="text-[10px] text-neutral-400 font-mono uppercase tracking-widest block">Choose Date</label>
+                    <label className="text-[10px] text-neutral-500 font-sans font-semibold uppercase tracking-wider block pl-1">Choose Date</label>
                     <div className="relative">
+                      <Calendar className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-450 w-4 h-4 pointer-events-none" />
                       <input 
                         id="input-res-date"
                         type="date"
                         required
                         value={date}
                         onChange={(e) => setDate(e.target.value)}
-                        className="w-full bg-neutral-900 border border-neutral-800 focus:border-gold-500 text-xs px-3 py-3 text-neutral-100 placeholder-neutral-600 focus:outline-none font-sans font-light"
+                        className="w-full bg-neutral-950 border border-neutral-850 focus:border-gold-500 focus:ring-1 focus:ring-gold-500/30 text-xs pl-10 pr-3.5 py-3.5 text-neutral-500 placeholder-neutral-450 focus:outline-none font-sans font-normal rounded-xl transition-all"
                       />
                     </div>
                   </div>
 
                   {/* Time slots selection field */}
                   <div className="space-y-1.5">
-                    <label className="text-[10px] text-neutral-400 font-mono uppercase tracking-widest block">Dining Hour</label>
-                    <select
-                      id="select-res-time"
-                      value={time}
-                      onChange={(e) => setTime(e.target.value)}
-                      className="w-full bg-neutral-900 border border-neutral-800 focus:border-gold-500 text-xs px-3 py-3 text-neutral-100 focus:outline-none font-sans font-light rounded-none cursor-pointer"
-                    >
-                      <option value="19:00">19:00 PM (Aperitif slot)</option>
-                      <option value="19:30">19:30 PM (Peak salon slot)</option>
-                      <option value="20:00">20:00 PM (Main flight slot)</option>
-                      <option value="20:30">20:30 PM (Main flight slot)</option>
-                      <option value="21:00">21:00 PM (Late flight slot)</option>
-                      <option value="21:30">21:30 PM (Late night slot)</option>
-                    </select>
+                    <label className="text-[10px] text-neutral-500 font-sans font-semibold uppercase tracking-wider block pl-1">Dining Hour</label>
+                    <div className="relative">
+                      <Clock className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-455 w-4 h-4 pointer-events-none" />
+                      <select
+                        id="select-res-time"
+                        value={time}
+                        onChange={(e) => setTime(e.target.value)}
+                        className="w-full bg-neutral-950 border border-neutral-850 focus:border-gold-500 focus:ring-1 focus:ring-gold-500/30 text-xs pl-10 pr-3 py-3.5 text-neutral-500 focus:outline-none font-sans font-normal rounded-xl cursor-pointer appearance-none transition-all"
+                      >
+                        <option value="19:00">19:00 PM (Aperitif)</option>
+                        <option value="19:30">19:30 PM (Peak Salon)</option>
+                        <option value="20:00">20:00 PM (Main Flight)</option>
+                        <option value="20:30">20:30 PM (Main Flight)</option>
+                        <option value="21:00">21:00 PM (Late Flight)</option>
+                        <option value="21:30">21:30 PM (Late Night)</option>
+                      </select>
+                    </div>
                   </div>
 
                   {/* Guests field */}
                   <div className="space-y-1.5">
-                    <label className="text-[10px] text-neutral-400 font-mono uppercase tracking-widest block">Party Size</label>
-                    <select
-                      id="select-res-guests"
-                      value={guests}
-                      onChange={(e) => setGuests(Number(e.target.value))}
-                      className="w-full bg-neutral-900 border border-neutral-800 focus:border-gold-500 text-xs px-3 py-3 text-neutral-100 focus:outline-none font-sans font-light rounded-none cursor-pointer"
-                    >
-                      {[1, 2, 3, 4, 5, 6, 8, 10, 12].map(num => (
-                        <option key={num} value={num}>{num} Guest{num > 1 ? 's' : ''}</option>
-                      ))}
-                    </select>
+                    <label className="text-[10px] text-neutral-500 font-sans font-semibold uppercase tracking-wider block pl-1">Party Size</label>
+                    <div className="relative">
+                      <Users className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-455 w-4 h-4 pointer-events-none" />
+                      <select
+                        id="select-res-guests"
+                        value={guests}
+                        onChange={(e) => setGuests(Number(e.target.value))}
+                        className="w-full bg-neutral-950 border border-neutral-850 focus:border-gold-500 focus:ring-1 focus:ring-gold-500/30 text-xs pl-10 pr-3 py-3.5 text-neutral-500 focus:outline-none font-sans font-normal rounded-xl cursor-pointer appearance-none transition-all"
+                      >
+                        {[1, 2, 3, 4, 5, 6, 8, 10, 12].map(num => (
+                          <option key={num} value={num}>{num} Guest{num > 1 ? 's' : ''}</option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
 
                 </div>
 
                 {/* Seating Tier selectors */}
                 <div className="space-y-2">
-                  <label className="text-[10px] text-neutral-400 font-mono uppercase tracking-widest block">Dining Salon Seating Tier</label>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  <label className="text-[10px] text-neutral-500 font-sans font-semibold uppercase tracking-wider block pl-1">Dining Salon Seating Tier</label>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                     {[
                       { value: 'standard', name: 'Grande Salle', limit: '1-12' },
                       { value: 'window', name: 'Marais View', limit: '1-4' },
@@ -294,14 +301,14 @@ export const ReservationForm: React.FC = () => {
                         id={`btn-tier-${tier.value}`}
                         type="button"
                         onClick={() => setTableType(tier.value as any)}
-                        className={`p-3.5 border transition-all text-center flex flex-col justify-center items-center gap-1 cursor-pointer ${
+                        className={`p-4 border transition-all text-center flex flex-col justify-center items-center gap-1 cursor-pointer rounded-xl duration-300 ${
                           tableType === tier.value
-                            ? 'border-gold-500 bg-gold-500/5 text-gold-400 font-semibold'
-                            : 'border-neutral-850 hover:border-neutral-800 bg-neutral-900/20 text-neutral-400'
+                            ? 'border-gold-500 bg-gold-500/10 text-gold-500 font-bold shadow-[0_4px_12px_rgba(201,162,39,0.12)] scale-[1.02]'
+                            : 'border-neutral-850 bg-neutral-950 text-neutral-500 hover:border-gold-500/30 hover:bg-gold-500/[0.02] hover:scale-[1.01]'
                         }`}
                       >
-                        <span className="text-[11px] font-serif leading-none">{tier.name}</span>
-                        <span className="text-[8px] font-mono opacity-50 block uppercase tracking-widest">{tier.limit} Pax</span>
+                        <span className="text-[11px] font-serif uppercase tracking-wider font-semibold leading-none">{tier.name}</span>
+                        <span className="text-[8px] font-mono block uppercase tracking-widest mt-1 text-neutral-450 font-bold">{tier.limit} Pax</span>
                       </button>
                     ))}
                   </div>
@@ -309,11 +316,11 @@ export const ReservationForm: React.FC = () => {
 
                 {/* Personal particulars fields */}
                 <div className="space-y-4">
-                  
-                  {/* Name field */}
+                       {/* Name field */}
                   <div className="space-y-1.5">
-                    <label className="text-[10px] text-neutral-400 font-mono uppercase tracking-widest block">Your Full Name</label>
+                    <label className="text-[10px] text-neutral-500 font-sans font-semibold uppercase tracking-wider block pl-1">Your Full Name</label>
                     <div className="relative">
+                      <User className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-450 w-4 h-4 pointer-events-none" />
                       <input 
                         id="input-res-name"
                         type="text"
@@ -321,7 +328,7 @@ export const ReservationForm: React.FC = () => {
                         placeholder="e.g. Baron Frederick Sterling"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="w-full bg-neutral-900 border border-neutral-800 focus:border-gold-500 text-xs px-4 py-3.5 text-neutral-100 placeholder-neutral-600 focus:outline-none font-sans font-light"
+                        className="w-full bg-neutral-950 border border-neutral-850 focus:border-gold-500 focus:ring-1 focus:ring-gold-500/30 text-xs pl-10 pr-4 py-3.5 text-neutral-500 placeholder-neutral-450 focus:outline-none font-sans font-normal rounded-xl transition-all"
                       />
                     </div>
                   </div>
@@ -331,30 +338,36 @@ export const ReservationForm: React.FC = () => {
                     
                     {/* Email field */}
                     <div className="space-y-1.5">
-                      <label className="text-[10px] text-neutral-400 font-mono uppercase tracking-widest block">Secure Email</label>
-                      <input 
-                        id="input-res-email"
-                        type="email"
-                        required
-                        placeholder="yourname@luxurymail.com"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="w-full bg-neutral-900 border border-neutral-800 focus:border-gold-500 text-xs px-4 py-3.5 text-neutral-100 placeholder-neutral-600 focus:outline-none font-sans font-light"
-                      />
+                      <label className="text-[10px] text-neutral-500 font-sans font-semibold uppercase tracking-wider block pl-1">Secure Email</label>
+                      <div className="relative">
+                        <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-450 w-4 h-4 pointer-events-none" />
+                        <input 
+                          id="input-res-email"
+                          type="email"
+                          required
+                          placeholder="yourname@luxurymail.com"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="w-full bg-neutral-950 border border-neutral-850 focus:border-gold-500 focus:ring-1 focus:ring-gold-500/30 text-xs pl-10 pr-4 py-3.5 text-neutral-500 placeholder-neutral-450 focus:outline-none font-sans font-normal rounded-xl transition-all"
+                        />
+                      </div>
                     </div>
 
                     {/* Phone field */}
                     <div className="space-y-1.5">
-                      <label className="text-[10px] text-neutral-400 font-mono uppercase tracking-widest block">Mobile Line</label>
-                      <input 
-                        id="input-res-phone"
-                        type="tel"
-                        required
-                        placeholder="+33 6 00 00 00 00"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        className="w-full bg-neutral-900 border border-neutral-800 focus:border-gold-500 text-xs px-4 py-3.5 text-neutral-100 placeholder-neutral-600 focus:outline-none font-sans font-light"
-                      />
+                      <label className="text-[10px] text-neutral-500 font-sans font-semibold uppercase tracking-wider block pl-1">Mobile Line</label>
+                      <div className="relative">
+                        <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-450 w-4 h-4 pointer-events-none" />
+                        <input 
+                          id="input-res-phone"
+                          type="tel"
+                          required
+                          placeholder="+33 6 00 00 00 00"
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                          className="w-full bg-neutral-950 border border-neutral-850 focus:border-gold-500 focus:ring-1 focus:ring-gold-500/30 text-xs pl-10 pr-4 py-3.5 text-neutral-500 placeholder-neutral-450 focus:outline-none font-sans font-normal rounded-xl transition-all"
+                        />
+                      </div>
                     </div>
 
                   </div>
@@ -363,22 +376,25 @@ export const ReservationForm: React.FC = () => {
 
                 {/* Special Dietary notes */}
                 <div className="space-y-1.5">
-                  <label className="text-[10px] text-neutral-400 font-mono uppercase tracking-widest block">Special Accommodations / Dietary Notes / Celebration Plans</label>
-                  <textarea
-                    id="input-res-notes"
-                    placeholder="e.g. Anniversary dinner. Please accommodate gluten allergy. Prefer a soft acoustic desk..."
-                    value={specialRequests}
-                    onChange={(e) => setSpecialRequests(e.target.value)}
-                    rows={3}
-                    className="w-full bg-neutral-900 border border-neutral-800 focus:border-gold-500 text-xs px-4 py-3 text-neutral-100 placeholder-neutral-600 focus:outline-none font-sans font-light resize-none rounded-none"
-                  />
+                  <label className="text-[10px] text-neutral-500 font-sans font-semibold uppercase tracking-wider block pl-1">Special Accommodations / Dietary Notes / Celebration Plans</label>
+                  <div className="relative">
+                    <Compass className="absolute left-3.5 top-4 text-neutral-450 w-4 h-4 pointer-events-none" />
+                    <textarea
+                      id="input-res-notes"
+                      placeholder="e.g. Anniversary dinner. Please accommodate gluten allergy. Prefer a soft acoustic desk..."
+                      value={specialRequests}
+                      onChange={(e) => setSpecialRequests(e.target.value)}
+                      rows={3}
+                      className="w-full bg-neutral-950 border border-neutral-850 focus:border-gold-500 focus:ring-1 focus:ring-gold-500/30 text-xs pl-10 pr-4 py-3.5 text-neutral-500 placeholder-neutral-450 focus:outline-none font-sans font-normal resize-none rounded-xl transition-all"
+                    />
+                  </div>
                 </div>
 
                 {/* Fine dining terms confirmation */}
-                <div className="border border-gold-500/10 p-4 bg-neutral-950 flex gap-3 text-[10px] text-neutral-400 leading-relaxed font-sans font-light">
-                  <CheckCircle className="w-5 h-5 text-gold-400 shrink-0" />
+                <div className="border border-gold-500/20 p-4 bg-gold-500/[0.02] rounded-xl flex gap-3 text-[11px] text-neutral-500 leading-relaxed font-sans font-medium">
+                  <CheckCircle className="w-5 h-5 text-gold-500 shrink-0" />
                   <div>
-                    <span className="text-gold-200 font-medium">Bespoke Reservation Standards:</span> A cancellation fee of €50 per person applies for tables modified within 48 hours. Proper elegant/formal dress is requested in our Grande Salle Salon.
+                    <span className="text-gold-600 font-semibold uppercase tracking-wider block mb-0.5">Bespoke Reservation Standards:</span> A cancellation fee of €50 per person applies for tables modified within 48 hours. Proper elegant/formal dress is requested in our Grande Salle Salon.
                   </div>
                 </div>
 
@@ -386,7 +402,7 @@ export const ReservationForm: React.FC = () => {
                 <button
                   id="btn-confirm-booking"
                   type="submit"
-                  className="w-full py-4 bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 hover:from-gold-500 hover:to-gold-600 text-neutral-950 text-xs font-bold uppercase tracking-widest rounded-none transition-all duration-300 shadow-lg shadow-gold-400/5 cursor-pointer"
+                  className="w-full py-4 bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 hover:from-gold-500 hover:to-gold-600 text-neutral-100 text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-md cursor-pointer hover:shadow-gold-500/10 rounded-full"
                 >
                   Verify & Request Reserved Table
                 </button>
@@ -400,8 +416,8 @@ export const ReservationForm: React.FC = () => {
           <div className="lg:col-span-5 space-y-6">
             
             {/* Ticket Lookup Console */}
-            <div className="glass-card p-5 border border-gold-500/5">
-              <span className="text-[10px] text-neutral-500 font-mono uppercase tracking-widest block mb-4">Query Confirmed Invitations</span>
+            <div className="glass-card p-5 border border-neutral-850 bg-neutral-950 rounded-2xl shadow-md">
+              <span className="text-[10px] text-neutral-500 font-sans font-semibold uppercase tracking-widest block mb-4 pl-1">Query Confirmed Invitations</span>
               <form id="lookup-form" onSubmit={lookupBooking} className="flex gap-2">
                 <input
                   id="input-lookup-code"
@@ -410,19 +426,19 @@ export const ReservationForm: React.FC = () => {
                   required
                   value={searchCode}
                   onChange={(e) => setSearchCode(e.target.value)}
-                  className="flex-1 bg-neutral-900 border border-neutral-850 focus:border-gold-500 text-xs px-3 py-3 font-mono text-neutral-100"
+                  className="flex-1 bg-neutral-950 border border-neutral-850 focus:border-gold-500 focus:ring-1 focus:ring-gold-500/30 text-xs px-3.5 py-3 font-mono text-neutral-500 rounded-xl focus:outline-none"
                 />
                 <button
                   id="btn-search-booking"
                   type="submit"
-                  className="px-4 bg-neutral-950 border border-gold-500/20 hover:border-gold-500 text-gold-400 hover:text-white transition-all text-xs font-mono flex items-center justify-center cursor-pointer"
+                  className="px-5 bg-neutral-950 border border-gold-500/20 hover:border-gold-500 text-gold-500 hover:text-white transition-all text-xs font-mono flex items-center justify-center cursor-pointer rounded-xl hover:bg-gold-500"
                 >
                   <Search className="w-3.5 h-3.5" />
                 </button>
               </form>
               
               {searchError && (
-                <p className="text-[10px] text-red-400 font-mono mt-2 pl-1">⚠ {searchError}</p>
+                <p className="text-[10px] text-red-500 font-mono mt-2 pl-1">⚠ {searchError}</p>
               )}
             </div>
 
@@ -440,15 +456,15 @@ export const ReservationForm: React.FC = () => {
                       initial={{ opacity: 0, scale: 0.98 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.95 }}
-                      className="glass-card p-6 border-2 border-gold-500/15 bg-neutral-950 relative overflow-hidden backdrop-blur-md"
+                      className="glass-card p-6 border border-neutral-850 bg-neutral-950 relative overflow-hidden shadow-md rounded-2xl"
                     >
                       {/* Ticket tear strip graphic */}
                       <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-gold-500/10 via-gold-500/40 to-gold-500/10" />
 
                       {/* Cancelled overstamp block */}
                       {isCancelled && (
-                        <div className="absolute inset-0 bg-red-950/20 backdrop-blur-[1px] flex items-center justify-center z-20 pointer-events-none">
-                          <div className="transform -rotate-12 border-4 border-red-500 text-red-500 text-2xl font-bold uppercase tracking-widest px-6 py-2 px-6">
+                        <div className="absolute inset-0 bg-red-950/10 backdrop-blur-[1px] flex items-center justify-center z-20 pointer-events-none rounded-2xl">
+                          <div className="transform -rotate-12 border-4 border-red-500 text-red-500 text-2xl font-bold uppercase tracking-widest px-6 py-2">
                             Cancelled
                           </div>
                         </div>
@@ -456,58 +472,58 @@ export const ReservationForm: React.FC = () => {
 
                       {/* Invitation Ticket Header */}
                       <div className="text-center pb-6 border-b border-dashed border-neutral-850 relative">
-                        <div className="w-10 h-10 mx-auto bg-neutral-900 border border-gold-500/25 flex items-center justify-center p-2 mb-3 text-gold-400">
+                        <div className="w-10 h-10 mx-auto bg-neutral-950 border border-gold-500/25 flex items-center justify-center p-2 mb-3 text-gold-500 rounded-xl">
                           <Ticket className="w-5 h-5" />
                         </div>
-                        <span className="text-[10px] text-gold-400 font-mono uppercase tracking-[0.3em] block">Fine Dining Invitation</span>
-                        <h4 className="text-white font-serif text-lg uppercase font-bold mt-1">L'ÉCLAT PARIS</h4>
-                        <span className="text-[9px] text-neutral-500 font-mono mt-1 block">Confirmation Signature Code</span>
-                        <span className="text-xs text-white font-mono font-semibold bg-neutral-900 px-3 py-1 border border-neutral-850 mt-1 inline-block select-all">
+                        <span className="text-[10px] text-gold-500 font-sans font-semibold uppercase tracking-[0.3em] block">Fine Dining Invitation</span>
+                        <h4 className="text-neutral-200 font-serif text-xl uppercase font-bold mt-1">L'ÉCLAT PARIS</h4>
+                        <span className="text-[9px] text-neutral-500 font-sans font-medium mt-1.5 block">Confirmation Code</span>
+                        <span className="text-xs text-neutral-200 font-mono font-bold bg-neutral-950 px-4 py-1.5 border border-neutral-850 mt-1 inline-block select-all rounded-lg">
                           {dataObj.id}
                         </span>
                       </div>
 
                       {/* Ticket stats body */}
-                      <div className="py-6 space-y-4 text-xs font-sans">
+                      <div className="py-6 space-y-4 text-xs font-sans text-neutral-500 font-medium">
                         
                         <div className="grid grid-cols-2 gap-4">
                           <div className="space-y-0.5">
-                            <span className="text-[9px] text-neutral-500 font-mono uppercase tracking-widest block">Primary Guest</span>
-                            <span className="text-white font-medium">{dataObj.name}</span>
+                            <span className="text-[9px] text-neutral-500 font-sans font-semibold uppercase tracking-wider block">Primary Guest</span>
+                            <span className="text-neutral-200 font-semibold text-sm">{dataObj.name}</span>
                           </div>
                           <div className="space-y-0.5 text-right">
-                            <span className="text-[9px] text-neutral-500 font-mono uppercase tracking-widest block">Party size</span>
-                            <span className="text-white font-semibold font-serif">{dataObj.guests} Guest{dataObj.guests > 1 ? 's' : ''}</span>
+                            <span className="text-[9px] text-neutral-500 font-sans font-semibold uppercase tracking-wider block">Party size</span>
+                            <span className="text-neutral-200 font-bold font-serif text-sm">{dataObj.guests} Guest{dataObj.guests > 1 ? 's' : ''}</span>
                           </div>
                         </div>
 
                         <div className="grid grid-cols-2 gap-4">
                           <div className="space-y-0.5">
-                            <span className="text-[9px] text-neutral-500 font-mono uppercase tracking-widest block">Date</span>
-                            <span className="text-white font-medium">{dataObj.date}</span>
+                            <span className="text-[9px] text-neutral-500 font-sans font-semibold uppercase tracking-wider block">Date</span>
+                            <span className="text-neutral-200 font-semibold">{dataObj.date}</span>
                           </div>
                           <div className="space-y-0.5 text-right">
-                            <span className="text-[9px] text-neutral-500 font-mono uppercase tracking-widest block">Dining Hour</span>
-                            <span className="text-gold-400 font-mono font-semibold">{dataObj.time} PM</span>
+                            <span className="text-[9px] text-neutral-500 font-sans font-semibold uppercase tracking-wider block">Dining Hour</span>
+                            <span className="text-gold-500 font-mono font-bold text-sm">{dataObj.time} PM</span>
                           </div>
                         </div>
 
                         <div className="grid grid-cols-2 gap-4">
                           <div className="space-y-0.5">
-                            <span className="text-[9px] text-neutral-500 font-mono uppercase tracking-widest block">Dining Salon</span>
-                            <span className="text-white font-medium capitalize">
+                            <span className="text-[9px] text-neutral-500 font-sans font-semibold uppercase tracking-wider block">Dining Salon</span>
+                            <span className="text-neutral-200 font-semibold">
                               {dataObj.tableType === 'standard' && 'La Grande Salle'}
-                              {dataObj.tableType === 'window' && 'Le Marais Window view'}
+                              {dataObj.tableType === 'window' && 'Le Marais Window View'}
                               {dataObj.tableType === 'chef-table' && 'The Chef\'s Pass'}
                               {dataObj.tableType === 'private-alcove' && 'The Private Suite'}
                             </span>
                           </div>
                           <div className="space-y-0.5 text-right flex flex-col items-end">
-                            <span className="text-[9px] text-neutral-500 font-mono uppercase tracking-widest block">Invitation Status</span>
-                            <span className={`px-2 py-0.5 text-[9px] font-semibold uppercase tracking-widest border font-mono ${
+                            <span className="text-[9px] text-neutral-500 font-sans font-semibold uppercase tracking-wider block">Invitation Status</span>
+                            <span className={`px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider border font-mono rounded-full ${
                               isCancelled 
-                                ? 'bg-red-500/10 border-red-500 text-red-400' 
-                                : 'bg-emerald-500/10 border-emerald-500 text-emerald-400'
+                                ? 'bg-red-500/10 border-red-500 text-red-500' 
+                                : 'bg-emerald-500/10 border-emerald-500 text-emerald-500'
                             }`}>
                               {dataObj.status}
                             </span>
@@ -515,20 +531,34 @@ export const ReservationForm: React.FC = () => {
                         </div>
 
                         {dataObj.specialRequests && (
-                          <div className="pt-3 border-t border-neutral-900 space-y-1">
-                            <span className="text-[9px] text-neutral-500 font-mono uppercase tracking-widest block">Special Accommodations</span>
-                            <p className="text-neutral-300 font-sans italic text-[11px] font-light">
+                          <div className="pt-3 border-t border-neutral-850 space-y-1">
+                            <span className="text-[9px] text-neutral-500 font-sans font-semibold uppercase tracking-wider block">Special Accommodations</span>
+                            <p className="text-neutral-500 font-sans italic text-[11px] leading-relaxed">
                               "{dataObj.specialRequests}"
                             </p>
                           </div>
                         )}
 
-                        <div className="pt-3 border-t border-neutral-900 space-y-1">
-                          <span className="text-[9px] text-neutral-500 font-mono uppercase tracking-widest block">Contact Registered</span>
-                          <p className="text-neutral-400 text-[10px] font-mono leading-relaxed">
+                        <div className="pt-3 border-t border-neutral-850 space-y-1">
+                          <span className="text-[9px] text-neutral-500 font-sans font-semibold uppercase tracking-wider block">Contact Registered</span>
+                          <p className="text-neutral-500 text-[10px] font-mono leading-relaxed">
                             {dataObj.email} <br />
                             {dataObj.phone}
                           </p>
+                        </div>
+
+                        {/* Barcode scanner display */}
+                        <div className="pt-4 border-t border-neutral-850 flex flex-col items-center gap-1.5">
+                          <span className="text-[8px] text-neutral-500 font-sans font-semibold tracking-widest uppercase">SCAN AT CONCIERGE DESK</span>
+                          <div className="flex gap-[2px] h-8 justify-center items-stretch w-full max-w-[200px] select-none">
+                            {[2, 1, 3, 1, 2, 4, 1, 2, 1, 3, 2, 1, 4, 1, 2, 2, 1, 3].map((width, idx) => (
+                              <div 
+                                key={idx} 
+                                className="bg-neutral-500" 
+                                style={{ width: `${width}px` }} 
+                              />
+                            ))}
+                          </div>
                         </div>
 
                       </div>
@@ -536,8 +566,8 @@ export const ReservationForm: React.FC = () => {
                       {/* Footer credentials */}
                       <div className="pt-4 border-t border-dashed border-neutral-850 flex justify-between items-center text-[10px] text-neutral-500 font-mono relative">
                         {/* Circular punch out notch graphics left/right */}
-                        <div className="absolute -left-8 -top-2 w-4 h-4 bg-[#131313] rounded-full border border-gold-500/5" />
-                        <div className="absolute -right-8 -top-2 w-4 h-4 bg-[#131313] rounded-full border border-gold-500/5" />
+                        <div className="absolute -left-8 -top-2 w-4 h-4 bg-neutral-950 rounded-full border border-neutral-850" />
+                        <div className="absolute -right-8 -top-2 w-4 h-4 bg-neutral-950 rounded-full border border-neutral-850" />
 
                         <span>PLACE DES VOSGES</span>
                         <span>L'ÉCLAT EXECUTIVE BRIGADE</span>
@@ -548,7 +578,7 @@ export const ReservationForm: React.FC = () => {
                         <button
                           id={`btn-cancel-res-${dataObj.id}`}
                           onClick={() => handleCancelBooking(dataObj.id)}
-                          className="mt-6 w-full py-3 bg-red-950/20 hover:bg-red-950/40 border border-red-500/25 hover:border-red-500 text-red-400 hover:text-white text-[10px] font-mono uppercase tracking-widest transition-all cursor-pointer"
+                          className="mt-6 w-full py-3 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 hover:border-red-500 text-red-500 hover:text-red-600 text-[10px] font-sans font-bold uppercase tracking-widest transition-all cursor-pointer rounded-full"
                         >
                           Cancel Table Booking
                         </button>
@@ -561,27 +591,27 @@ export const ReservationForm: React.FC = () => {
             </AnimatePresence>
 
             {/* RESERVATION HISTORY LEDGER CARD */}
-            <div className="glass-card p-6 border border-gold-500/10">
+            <div className="glass-card p-6 border border-neutral-850 bg-neutral-950 rounded-2xl shadow-md">
               <div className="flex items-center gap-2 mb-4">
-                <History className="w-4 h-4 text-gold-400 animate-pulse" />
-                <span className="text-[10px] text-gold-400 font-mono uppercase tracking-widest block">Your Dining Ledger & History</span>
+                <History className="w-4 h-4 text-gold-500 animate-pulse" />
+                <span className="text-[11px] text-neutral-200 font-serif font-bold uppercase tracking-wider block">Your Dining Ledger</span>
               </div>
-              <p className="text-neutral-400 font-sans text-[11px] font-light leading-relaxed mb-4">
+              <p className="text-neutral-500 font-sans text-xs font-normal leading-relaxed mb-5">
                 View upcoming appointments and historical dining collections. Select an entry to print or view details.
               </p>
 
               {/* History Tabs */}
-              <div className="grid grid-cols-3 gap-1 mb-5 border-b border-neutral-900/60 pb-3">
+              <div className="flex gap-1 mb-5 border-b border-neutral-850 pb-3">
                 {(['all', 'upcoming', 'past'] as const).map(tab => (
                   <button
                     key={tab}
                     id={`btn-history-tab-${tab}`}
                     type="button"
                     onClick={() => setHistoryTab(tab)}
-                    className={`py-1.5 px-2 text-[10px] tracking-wider uppercase font-mono transition-all text-center border cursor-pointer ${
+                    className={`py-1.5 px-3 text-[9px] tracking-wider uppercase font-sans font-semibold transition-all text-center border cursor-pointer rounded-full ${
                       historyTab === tab
-                        ? 'border-gold-500/30 bg-gold-500/5 text-gold-400 font-bold'
-                        : 'border-transparent text-neutral-500 hover:text-neutral-300'
+                        ? 'border-gold-500 bg-gold-500/10 text-gold-500 shadow-sm'
+                        : 'border-transparent text-neutral-500 hover:text-gold-500 hover:bg-gold-500/5'
                     }`}
                   >
                     {tab === 'all' && 'All'}
@@ -594,8 +624,8 @@ export const ReservationForm: React.FC = () => {
               {/* Ledger List */}
               <div className="space-y-3 max-h-[380px] overflow-y-auto pr-1 scrollbar style-scrollbar">
                 {filteredHistory.length === 0 ? (
-                  <div className="text-center py-8 border border-dashed border-neutral-900/70">
-                    <span className="text-[9px] font-mono text-neutral-600 uppercase tracking-widest block">No matching soirees found</span>
+                  <div className="text-center py-8 border border-dashed border-neutral-850 rounded-xl">
+                    <span className="text-[9px] font-sans font-semibold text-neutral-500 uppercase tracking-widest block">No matching soirees found</span>
                   </div>
                 ) : (
                   filteredHistory.map((item) => {
@@ -606,44 +636,44 @@ export const ReservationForm: React.FC = () => {
                     return (
                       <div
                         key={item.id}
-                        className={`p-3 border transition-all ${
+                        className={`p-4 border transition-all rounded-xl ${
                           (searchedRes?.id === item.id || confirmedReservation?.id === item.id)
-                            ? 'border-gold-500 bg-gold-400/[0.02]'
-                            : 'border-neutral-900 hover:border-neutral-850 bg-neutral-950/40'
+                            ? 'border-gold-500 bg-gold-500/5 shadow-md'
+                            : 'border-neutral-850 hover:border-neutral-500/30 bg-neutral-950 shadow-sm'
                         }`}
                       >
                         <div className="flex justify-between items-start gap-2">
-                          <div className="space-y-0.5">
-                            <span className="text-[10px] text-white font-serif font-semibold block leading-none">
+                          <div className="space-y-1">
+                            <span className="text-xs text-neutral-200 font-serif font-bold block leading-none">
                               {item.tableType === 'standard' && 'La Grande Salle'}
-                              {item.tableType === 'window' && 'Le Marais Window view'}
+                              {item.tableType === 'window' && 'Le Marais Window View'}
                               {item.tableType === 'chef-table' && 'The Chef\'s Pass'}
                               {item.tableType === 'private-alcove' && 'The Private Suite'}
                             </span>
-                            <span className="text-[9px] font-mono text-neutral-400 block">
+                            <span className="text-[9px] font-mono text-neutral-500 block">
                               {item.date} @ {item.time} PM
                             </span>
                           </div>
                           
                           <div className="flex flex-col items-end gap-1">
-                            <span className={`px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-widest border font-mono ${
+                            <span className={`px-2 py-0.5 text-[8px] font-bold uppercase tracking-wider border font-sans rounded-full ${
                               isCancelled
-                                ? 'bg-red-500/10 border-red-500/30 text-red-400'
+                                ? 'bg-red-500/10 border-red-500/30 text-red-500'
                                 : isPast
-                                ? 'bg-neutral-850 border-neutral-800 text-neutral-500'
-                                : 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400'
+                                ? 'bg-neutral-950 border-neutral-850 text-neutral-550'
+                                : 'bg-emerald-500/10 border-emerald-500/20 text-emerald-500'
                             }`}>
                               {isCancelled ? 'Cancelled' : isPast ? 'Past' : 'Upcoming'}
                             </span>
-                            <span className="text-[9px] text-neutral-500 font-mono">
+                            <span className="text-[9px] text-neutral-500 font-mono font-medium">
                               {item.guests} Guest{item.guests > 1 ? 's' : ''}
                             </span>
                           </div>
                         </div>
 
                         {/* Extra minor stats & action details line */}
-                        <div className="mt-3 pt-2 border-t border-neutral-900/60 flex justify-between items-center gap-2">
-                          <span className="text-[8px] text-neutral-600 font-mono tracking-wider truncate max-w-[120px] select-all">
+                        <div className="mt-3 pt-2.5 border-t border-neutral-850 flex justify-between items-center gap-2">
+                          <span className="text-[8px] text-neutral-500 font-mono tracking-wider truncate max-w-[120px] select-all font-semibold">
                             {item.id}
                           </span>
                           
@@ -659,7 +689,7 @@ export const ReservationForm: React.FC = () => {
                                   setConfirmedReservation(null);
                                 }
                               }}
-                              className="px-2 py-1 bg-neutral-900 hover:bg-neutral-850 border border-neutral-850 hover:border-gold-500/30 text-gold-400 text-[8px] font-mono uppercase tracking-widest cursor-pointer transition-all"
+                              className="px-3 py-1 bg-neutral-950 hover:bg-gold-500 hover:text-white border border-neutral-850 hover:border-gold-500 text-gold-500 text-[8px] font-sans font-bold uppercase tracking-widest cursor-pointer transition-all rounded-full"
                             >
                               Inspect Ticket
                             </button>
@@ -669,7 +699,7 @@ export const ReservationForm: React.FC = () => {
                                 id={`btn-cancel-ledger-${item.id}`}
                                 type="button"
                                 onClick={() => handleCancelBooking(item.id)}
-                                className="px-2 py-1 bg-red-950/10 hover:bg-red-950/30 border border-red-500/20 hover:border-red-500 text-red-500 hover:text-red-400 text-[8px] font-mono uppercase tracking-widest cursor-pointer transition-all"
+                                className="px-3 py-1 bg-red-500/10 hover:bg-red-500 hover:text-white border border-red-500/20 hover:border-red-500 text-red-500 text-[8px] font-sans font-bold uppercase tracking-widest cursor-pointer transition-all rounded-full"
                               >
                                 Cancel Table
                               </button>

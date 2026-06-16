@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
 import { Clock, Calendar, ChefHat, Compass, Sparkles, ArrowRight, Wine } from 'lucide-react';
 import { SIGNATURE_CREATIONS, HERO_IMAGE } from '../data';
 
@@ -9,19 +9,31 @@ interface FrontSeatProps {
 
 export const FrontSeat: React.FC<FrontSeatProps> = ({ onNavigate }) => {
   const [activeCreation, setActiveCreation] = useState(0);
+  const containerRef = useRef<HTMLElement>(null);
+
+  // Scroll parallax configurations
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const bgOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.6]);
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-between pt-24 pb-12 overflow-hidden">
-      {/* Background Hero Zoom */}
-      <div className="absolute inset-0 z-0">
+    <section ref={containerRef} className="relative min-h-screen flex flex-col justify-between pt-24 pb-12 overflow-hidden">
+      {/* Background Hero Zoom & Parallax (Fixed Cover Effect) */}
+      <div className="absolute inset-0 z-0" style={{ clipPath: 'inset(0px)' }}>
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 transition-transform duration-[10s] ease-out"
-          style={{ backgroundImage: `url(${HERO_IMAGE})` }}
+          className="fixed inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ 
+            backgroundImage: `url(${HERO_IMAGE})`
+          }}
         />
-        <div className="absolute inset-0 bg-neutral-950/85 backdrop-blur-[2px]" />
+        <div className="fixed inset-0 bg-neutral-950/35" />
         
         {/* Subtle decorative grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(242,202,80,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(242,202,80,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+        <div className="fixed inset-0 bg-[linear-gradient(to_right,rgba(230,57,70,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(230,57,70,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
       </div>
 
       {/* Hero Content */}
@@ -43,7 +55,7 @@ export const FrontSeat: React.FC<FrontSeatProps> = ({ onNavigate }) => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.1 }}
-              className="text-amber-50 font-serif leading-none italic font-normal text-3xl md:text-4xl"
+              className="text-gold-500 font-accent leading-none italic text-[36px] md:text-[46px]"
             >
               L’Art Gastronomique
             </motion.h2>
@@ -51,7 +63,7 @@ export const FrontSeat: React.FC<FrontSeatProps> = ({ onNavigate }) => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="text-white font-serif text-5xl md:text-7xl lg:text-8xl tracking-tight leading-none uppercase font-bold"
+              className="text-white font-serif text-[48px] md:text-[64px] tracking-[-1px] leading-none uppercase font-bold"
             >
               L'ÉCLAT
             </motion.h1>
@@ -61,7 +73,7 @@ export const FrontSeat: React.FC<FrontSeatProps> = ({ onNavigate }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="text-neutral-300 font-sans text-sm md:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed font-light"
+            className="text-neutral-350 font-sans text-[16px] md:text-[18px] max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal"
           >
             Where pure culinary high-art aligns with exquisite sensory theater. Executive Chef Julian Vance presents a masterfully curated symphony of rare flavours, vintage grand crus, and bespoke dining salons in the heart of Paris.
           </motion.p>
@@ -75,14 +87,14 @@ export const FrontSeat: React.FC<FrontSeatProps> = ({ onNavigate }) => {
             <button 
               id="btn-nav-reservation"
               onClick={() => onNavigate('reservations')}
-              className="px-8 py-4 bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 hover:from-gold-500 hover:to-gold-600 text-neutral-950 text-xs font-semibold uppercase tracking-widest rounded-none transition-all duration-300 shadow-lg shadow-gold-500/10 hover:shadow-gold-500/20 cursor-pointer"
+              className="px-8 py-4 bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 hover:from-gold-500 hover:to-gold-600 text-neutral-100 text-[16px] font-semibold uppercase tracking-wider rounded-none transition-all duration-300 shadow-lg shadow-gold-500/10 hover:shadow-gold-500/20 cursor-pointer font-sans"
             >
               Reserve a Table
             </button>
             <button 
               id="btn-nav-menu"
               onClick={() => onNavigate('menu')}
-              className="px-8 py-4 bg-transparent border border-neutral-700 hover:border-gold-400 text-white hover:text-gold-400 text-xs font-semibold uppercase tracking-widest rounded-none transition-all duration-300 cursor-pointer"
+              className="px-8 py-4 bg-transparent border border-neutral-700 hover:border-gold-400 text-white hover:text-gold-400 text-[16px] font-semibold uppercase tracking-wider rounded-none transition-all duration-300 cursor-pointer font-sans"
             >
               Explore Degustation Menu
             </button>
@@ -95,32 +107,34 @@ export const FrontSeat: React.FC<FrontSeatProps> = ({ onNavigate }) => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="glass-card p-6 relative rounded-none border border-gold-500/10 overflow-hidden group"
+            className="glass-card p-6 relative rounded-2xl border border-gold-500/10 overflow-hidden group"
           >
-            <div className="relative h-64 overflow-hidden mb-6 border border-neutral-800">
+            <div className="relative h-64 overflow-hidden mb-6 rounded-2xl border border-neutral-850" style={{ perspective: 1000 }}>
               <AnimatePresence mode="wait">
                 <motion.video 
                   key={activeCreation}
                   src={SIGNATURE_CREATIONS[activeCreation].videoUrl}
                   autoPlay
-                  loop
                   muted
                   playsInline
-                  className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1.5s] ease-out"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
+                  onEnded={() => {
+                    setActiveCreation(prev => (prev + 1) % SIGNATURE_CREATIONS.length);
+                  }}
+                  className="w-full h-full object-cover grayscale brightness-95 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1.5s] ease-out"
+                  initial={{ opacity: 0, rotateY: 75, scale: 0.92, filter: 'blur(4px)' }}
+                  animate={{ opacity: 1, rotateY: 0, scale: 1, filter: 'blur(0px)' }}
+                  exit={{ opacity: 0, rotateY: -75, scale: 0.92, filter: 'blur(4px)' }}
+                  transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
                 />
               </AnimatePresence>
-              <div className="absolute top-3 left-3 bg-neutral-950/80 px-2 py-1 text-[10px] text-gold-400 uppercase tracking-widest border border-gold-500/20 font-mono">
+              <div className="absolute top-4 left-4 bg-neutral-900/90 px-3 py-1 text-[10px] text-gold-600 uppercase tracking-widest border border-gold-500/20 font-accent italic">
                 Chef's Masterpiece
               </div>
             </div>
 
             <div className="space-y-2 select-none">
-              <span className="text-gold-400 font-mono text-xs uppercase tracking-widest">
-                Creations {activeCreation + 1} of {SIGNATURE_CREATIONS.length}
+              <span className="text-gold-500 font-accent italic text-sm tracking-wider">
+                Creation 0{activeCreation + 1} of {SIGNATURE_CREATIONS.length}
               </span>
               <AnimatePresence mode="wait">
                 <motion.div
@@ -130,38 +144,52 @@ export const FrontSeat: React.FC<FrontSeatProps> = ({ onNavigate }) => {
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <h3 className="text-white text-xl font-serif font-semibold">
+                  <h3 className="text-neutral-200 text-xl font-serif font-bold">
                     {SIGNATURE_CREATIONS[activeCreation].name}
                   </h3>
-                  <p className="text-gold-500/70 text-xs italic font-serif mb-2">
+                  <p className="text-gold-500 font-accent italic text-sm mb-2">
                     {SIGNATURE_CREATIONS[activeCreation].frenchName}
                   </p>
-                  <p className="text-neutral-400 text-xs leading-relaxed font-light font-sans">
+                  <p className="text-neutral-550 text-xs leading-relaxed font-normal font-sans">
                     {SIGNATURE_CREATIONS[activeCreation].description}
                   </p>
                 </motion.div>
               </AnimatePresence>
             </div>
 
-            <div className="flex justify-between items-center mt-6 pt-4 border-t border-neutral-900">
-              <div className="flex gap-1.5">
-                {SIGNATURE_CREATIONS.map((_, idx) => (
+            <div className="grid grid-cols-3 gap-3 mt-6 pt-5 border-t border-neutral-850">
+              {SIGNATURE_CREATIONS.map((creation, idx) => {
+                const isActive = activeCreation === idx;
+                const thumbImage = idx === 0 
+                  ? "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=150&auto=format&fit=crop" 
+                  : idx === 1
+                  ? "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=150&auto=format&fit=crop"
+                  : "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=150&auto=format&fit=crop";
+                
+                return (
                   <button
-                    key={idx}
-                    id={`btn-carousel-dot-${idx}`}
+                    key={creation.id}
+                    id={`btn-carousel-card-${idx}`}
                     onClick={() => setActiveCreation(idx)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${activeCreation === idx ? 'bg-gold-400 w-5' : 'bg-neutral-700 hover:bg-neutral-500'}`}
-                  />
-                ))}
-              </div>
-              <button
-                id="btn-carousel-next"
-                onClick={() => setActiveCreation((prev) => (prev + 1) % SIGNATURE_CREATIONS.length)}
-                className="text-xs text-gold-400 hover:text-white uppercase tracking-widest font-mono flex items-center gap-1 group/btn cursor-pointer"
-              >
-                Next Creation
-                <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
-              </button>
+                    className={`flex flex-col items-center p-2 rounded-xl border transition-all duration-300 cursor-pointer ${
+                      isActive 
+                        ? 'border-gold-500 bg-gold-500/[0.04] shadow-sm' 
+                        : 'border-neutral-850 bg-neutral-900/40 hover:border-neutral-800 hover:-translate-y-0.5'
+                    }`}
+                  >
+                    <div className="w-12 h-12 rounded-lg overflow-hidden mb-1.5 border border-neutral-850">
+                      <img 
+                        src={thumbImage} 
+                        alt={creation.name} 
+                        className={`w-full h-full object-cover transition-transform duration-500 ${isActive ? 'scale-105' : 'grayscale hover:grayscale-0'}`}
+                      />
+                    </div>
+                    <span className={`text-[10px] uppercase font-sans tracking-wider text-center leading-tight truncate w-full ${isActive ? 'text-gold-500 font-semibold' : 'text-neutral-500 font-normal'}`}>
+                      {creation.name}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </motion.div>
         </div>

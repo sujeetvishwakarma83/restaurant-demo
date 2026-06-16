@@ -82,8 +82,8 @@ export const GastronomyMenu: React.FC = () => {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-gold-400 font-mono text-xs uppercase tracking-[0.35em] block mb-3">La Carte Haute Gastronomie</span>
-          <h2 className="text-white font-serif text-3xl md:text-5xl font-medium tracking-tight mb-4">Culinary Masterpieces</h2>
-          <p className="text-neutral-400 font-sans text-sm font-light leading-relaxed">
+          <h2 className="text-white font-serif text-[32px] md:text-[40px] font-semibold tracking-tight mb-4">Culinary Masterpieces</h2>
+          <p className="text-neutral-450 font-sans text-[16px] md:text-[18px] font-normal leading-relaxed">
             Every creation is assembled à la minute, balancing seasonal treasures with advanced kitchen alchemy. Hover over elements to trace culinary properties.
           </p>
         </div>
@@ -212,42 +212,63 @@ export const GastronomyMenu: React.FC = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0 }}
-                      className="glass-card p-5 border border-gold-500/5 hover:border-gold-500/15 transition-all group duration-300 flex justify-between items-start gap-4 relative overflow-hidden"
+                      className={`glass-card p-5 border transition-all group duration-300 flex items-start gap-5 relative overflow-hidden ${
+                        exists 
+                          ? 'border-gold-500 bg-gold-500/[0.02] shadow-md' 
+                          : 'border-gold-500/5 hover:border-gold-500/20'
+                      }`}
                     >
-                      <div className="space-y-2 flex-1">
-                        <div className="flex flex-wrap items-baseline gap-x-2">
-                          <h4 className="text-white text-base font-serif font-medium">{item.name}</h4>
-                          <span className="text-gold-500/60 text-xs italic font-serif">({item.frenchName})</span>
+                      {/* Left: Food Image with Rounded Container and Zoom on Hover */}
+                      {item.imageUrl && (
+                        <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden shrink-0 border border-neutral-850 bg-neutral-950">
+                          <img 
+                            src={item.imageUrl} 
+                            alt={item.name} 
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
                         </div>
-                        <p className="text-neutral-400 text-xs font-sans font-light leading-relaxed max-w-md">
-                          {item.description}
-                        </p>
-                        {item.tags && (
-                          <div className="flex gap-1.5 pt-1.5">
-                            {item.tags.map(t => (
-                              <span key={t} className="px-2 py-0.5 text-[8px] uppercase tracking-widest bg-neutral-900 text-neutral-500 border border-neutral-800 font-mono">
-                                {t}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-                      </div>
+                      )}
 
-                      <div className="text-right space-y-4 flex flex-col items-end shrink-0">
-                        <span className="text-sm font-semibold text-gold-400 font-mono">€{item.price}</span>
-                        <button
-                          id={`btn-add-${item.id}`}
-                          onClick={() => addToJourney(item)}
-                          disabled={exists}
-                          className={`p-2 rounded-none border transition-all ${
-                            exists 
-                              ? 'bg-neutral-900 border-neutral-800 text-neutral-600' 
-                              : 'bg-gold-500/5 border-gold-500/20 hover:bg-gold-500/10 text-gold-400 hover:border-gold-500 cursor-pointer'
-                          }`}
-                          title={exists ? "Already added to your journey" : "Add to bespoke tasting progression"}
-                        >
-                          {exists ? <Check className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
-                        </button>
+                      {/* Right: Info Area */}
+                      <div className="space-y-2 flex-1 flex flex-col justify-between min-h-[80px] sm:min-h-[96px]">
+                        <div className="space-y-1">
+                          <div className="flex flex-wrap items-baseline gap-x-2">
+                            <h4 className="text-neutral-200 text-[18px] md:text-[20px] font-sans font-medium leading-none">{item.name}</h4>
+                            <span className="text-gold-500 font-accent italic text-xs">({item.frenchName})</span>
+                          </div>
+                          <p className="text-neutral-450 text-xs font-sans font-normal leading-relaxed">
+                            {item.description}
+                          </p>
+                        </div>
+
+                        <div className="flex justify-between items-center pt-2">
+                          {item.tags && (
+                            <div className="flex flex-wrap gap-1">
+                              {item.tags.map(t => (
+                                <span key={t} className="px-2 py-0.5 text-[8px] uppercase tracking-widest bg-neutral-950 text-neutral-455 border border-neutral-850 font-mono">
+                                  {t}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                          
+                          <div className="flex items-center gap-3 ml-auto">
+                            <span className="text-sm font-semibold text-gold-500 font-mono">€{item.price}</span>
+                            <button
+                              id={`btn-add-${item.id}`}
+                              onClick={() => addToJourney(item)}
+                              disabled={exists}
+                              className={`p-2 rounded-none border transition-all ${
+                                exists 
+                                  ? 'bg-neutral-950 border-neutral-850 text-neutral-455' 
+                                  : 'bg-gold-500/5 border-gold-500/20 hover:bg-gold-500/10 text-gold-500 hover:border-gold-500 cursor-pointer'
+                              }`}
+                              title={exists ? "Already added to your journey" : "Add to bespoke tasting progression"}
+                            >
+                              {exists ? <Check className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
+                            </button>
+                          </div>
+                        </div>
                       </div>
                     </motion.div>
                   );
@@ -283,7 +304,7 @@ export const GastronomyMenu: React.FC = () => {
 
               {tastingJourney.length === 0 ? (
                 <div className="py-12 text-center border border-dashed border-neutral-800 space-y-3">
-                  <p className="text-xs text-neutral-500 font-sans font-light max-w-[200px] mx-auto">
+                  <p className="text-xs text-neutral-500 font-sans font-normal max-w-[200px] mx-auto">
                     Compile your customized tasting flight by selecting creations from L'Éclat menu.
                   </p>
                   <span className="inline-block text-[10px] bg-neutral-900 px-3 py-1 font-mono text-gold-500/60 uppercase tracking-widest">
@@ -331,7 +352,7 @@ export const GastronomyMenu: React.FC = () => {
                       id="btn-critique-tasting"
                       onClick={getSommelierCritique}
                       disabled={loadingCritique}
-                      className="w-full py-3 bg-neutral-950 hover:bg-neutral-900 border border-gold-500/30 text-gold-400 text-xs uppercase tracking-widest font-mono hover:border-gold-500 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                      className="w-full py-3 bg-neutral-950 hover:bg-neutral-900 border border-gold-500/30 text-gold-600 text-xs uppercase tracking-widest font-mono hover:border-gold-500 transition-all flex items-center justify-center gap-2 cursor-pointer"
                     >
                       {loadingCritique ? (
                         <>
@@ -355,7 +376,7 @@ export const GastronomyMenu: React.FC = () => {
                           className="bg-neutral-950 p-4 border border-gold-500/10 overflow-hidden"
                         >
                           <span className="text-[10px] text-gold-400 font-mono uppercase tracking-widest block mb-2">★★★★★ Head Sommelier Note:</span>
-                          <p className="text-[11px] text-neutral-300 font-sans leading-relaxed italic font-light whitespace-pre-line">
+                          <p className="text-[11px] text-neutral-300 font-sans leading-relaxed italic font-normal whitespace-pre-line">
                             "{critiqueText}"
                           </p>
                         </motion.div>

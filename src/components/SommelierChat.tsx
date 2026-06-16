@@ -109,14 +109,14 @@ export const SommelierChat: React.FC = () => {
                 <div 
                   className={`p-4 font-sans text-xs md:text-sm leading-relaxed rounded-none border ${
                     msg.role === 'user'
-                      ? 'bg-gold-500/5 text-gold-200 border-gold-500/20'
-                      : 'bg-neutral-955 text-neutral-200 border-neutral-900'
+                      ? 'bg-gold-500/5 text-neutral-200 border-gold-500/20'
+                      : 'bg-neutral-900 text-neutral-200 border-neutral-850'
                   }`}
                   style={{
-                    backgroundColor: msg.role === 'user' ? 'rgba(233, 195, 73, 0.05)' : 'rgba(15, 15, 15, 0.9)'
+                    backgroundColor: msg.role === 'user' ? 'rgba(212, 175, 55, 0.05)' : 'rgba(239, 234, 227, 0.9)'
                   }}
                 >
-                  <p className="whitespace-pre-line font-light tracking-wide">{msg.text}</p>
+                  <p className="whitespace-pre-line font-normal tracking-wide">{msg.text}</p>
                 </div>
                 <span className="text-[9px] text-neutral-500 font-mono uppercase mt-1 px-1 tracking-widest">
                   {msg.role === 'user' ? 'Table Guest' : 'Maitre Larousse'}
@@ -171,14 +171,14 @@ export const SommelierChat: React.FC = () => {
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Inquire of vintages, ingredients, culinary arts..."
-              className="flex-1 bg-neutral-900 border border-neutral-850 focus:border-gold-500 text-xs px-4 py-3 placeholder:text-neutral-600 focus:outline-none font-sans font-light text-neutral-100"
+              className="flex-1 bg-neutral-900 border border-neutral-850 focus:border-gold-500 text-xs px-4 py-3 placeholder:text-neutral-600 focus:outline-none font-sans font-normal text-neutral-100"
               disabled={loading}
             />
             <button
               id="btn-send-chat"
               type="submit"
               disabled={loading || !inputValue.trim()}
-              className="px-5 bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-600 text-neutral-950 font-bold transition-all disabled:opacity-45 flex items-center justify-center cursor-pointer"
+              className="px-5 bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-600 text-neutral-100 font-bold transition-all disabled:opacity-45 flex items-center justify-center cursor-pointer"
             >
               <Send className="w-3.5 h-3.5" />
             </button>

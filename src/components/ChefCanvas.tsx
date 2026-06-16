@@ -63,8 +63,8 @@ export const ChefCanvas: React.FC = () => {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-gold-400 font-mono text-xs uppercase tracking-[0.35em] block mb-3">La Toile du Chef Vance</span>
-          <h2 className="text-white font-serif text-3xl md:text-5xl font-medium tracking-tight mb-4">The Culinary Canvas</h2>
-          <p className="text-neutral-400 font-sans text-sm font-light leading-relaxed">
+          <h2 className="text-white font-serif text-[32px] md:text-[40px] font-semibold tracking-tight mb-4">The Culinary Canvas</h2>
+          <p className="text-neutral-450 font-sans text-[16px] md:text-[18px] font-normal leading-relaxed">
             A visual documentation of high-gastronomy creations, architectural dining spaces, and the synchronized kinetic energy of the hot kitchen line.
           </p>
         </div>
@@ -93,7 +93,7 @@ export const ChefCanvas: React.FC = () => {
             
             <h3 className="text-white font-serif text-2xl md:text-3xl leading-snug">"Gastronomy is a fleeting sculpture, designed to evaporate into pure human memories."</h3>
             
-            <p className="text-neutral-400 text-xs md:text-sm font-sans leading-relaxed font-light">
+            <p className="text-neutral-455 text-[16px] md:text-[18px] font-sans leading-relaxed font-normal">
               Chef de Cuisine Julien Vance directs L’Éclat with absolute mathematical precision and romantic flair. After training in legendary Châteaux throughout Loire and Lyon, Julien spent a decade perfecting molecular geometry and flavour extractions. Under his baton, every garnish, droplet of emulsion, and crystal of fleur de sel is calibrated to balance raw marine salinity, botanical acidity, and rich game savouriness.
             </p>
 
@@ -274,7 +274,7 @@ export const ChefCanvas: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-neutral-950/98 z-50 flex items-center justify-center p-4 md:p-8"
+              className="fixed inset-0 bg-[#111827]/98 z-50 flex items-center justify-center p-4 md:p-8"
               onClick={() => setSelectedPhoto(null)}
             >
               <div 
@@ -285,7 +285,7 @@ export const ChefCanvas: React.FC = () => {
                 <button 
                   id="btn-close-lightbox"
                   onClick={() => setSelectedPhoto(null)}
-                  className="absolute -top-4 -right-4 p-2 bg-gold-500 text-neutral-950 rounded-full cursor-pointer hover:bg-gold-400 transition-colors"
+                  className="absolute -top-4 -right-4 p-2 bg-gold-500 text-neutral-100 rounded-full cursor-pointer hover:bg-gold-400 transition-colors"
                 >
                   <X className="w-4 h-4" />
                 </button>

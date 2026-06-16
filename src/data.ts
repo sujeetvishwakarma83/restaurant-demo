@@ -1,6 +1,6 @@
 import { MenuItem, GalleryItem, Testimonial } from './types';
 
-export const HERO_IMAGE = 'https://lh3.googleusercontent.com/aida-public/AB6AXuDddJISJ4T6DCj6RBDfIX95duxlk4UFlxYDq_yA5xJPA9wrTKIFNp3e1yPsPScNHKd9-zwHGvjXEp60QCwwVsdKZ_2J9c3uE0yKOhrrsejEngbOdUUgtYHcHYyEl6hQ7KlhxkGWbika5rXO8xCGKFpEdisx4FKzMtUwKyNNTT9niw5JXNVA6_969n3lIT-ZSSCvJ3CHN9zr31e7qnuwbqo7O_0_wyWaRAL1stpkG928TLwlRIsQkM6gOYaTFqEUMWSCvoRNHQTN5Cxp';
+export const HERO_IMAGE = 'https://images.unsplash.com/photo-1592861956120-e524fc739696?q=80&w=2070&auto=format&fit=crop';
 
 export const CHEF_PORTRAIT_1 = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAIMNNrWVgenN0KEzT73gK4Lzo3vlMYgbWv1gNxCIHPwsaV6FfYisLuK58P7Chm0DLFjdw9C6xAcrHS76Q1FB28xMqoq0kqi3LkytuI9CHX5_1mJM9Y7VAPNGPfnkJY-XXPXjOC8KjLAXlw9xwOV5rDyRXAMUCGe-14SHw9dvM7qCfXUZnqHHS3ltJlk5BysEV7OULlXTulga_ApGjXujqLbrDK51m9Lv0nSqZWUcM5bN0iahV_StOPNazZIQZ3o_M9XZ0BwqLn2NqC';
 
@@ -51,7 +51,8 @@ export const MENU_ITEMS: MenuItem[] = [
     frenchName: 'Le Velouté de Truffe',
     price: 34,
     description: 'Wild forest mushrooms, 24-month aged parmesan foam, shaved black winter truffle.',
-    tags: ['Vegetarian', 'Gluten Free']
+    tags: ['Vegetarian', 'Gluten Free'],
+    imageUrl: 'https://images.unsplash.com/photo-1547592165-e1d17fed6005?q=80&w=600&auto=format&fit=crop'
   },
   {
     id: 'ent2',
@@ -60,7 +61,8 @@ export const MENU_ITEMS: MenuItem[] = [
     frenchName: 'Le Crudo de Thon Rouge',
     price: 42,
     description: 'Citrus emulsion, pickled radish, oscietra caviar, gold leaf garnish.',
-    tags: ['Signature', 'Seafood']
+    tags: ['Signature', 'Seafood'],
+    imageUrl: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600&auto=format&fit=crop'
   },
   {
     id: 'ent3',
@@ -69,7 +71,8 @@ export const MENU_ITEMS: MenuItem[] = [
     frenchName: 'Les Betteraves de Caractère',
     price: 28,
     description: 'Whipped goat cheese, honeycomb, toasted hazelnut, balsamic reduction.',
-    tags: ['Vegetarian', 'Nuts']
+    tags: ['Vegetarian', 'Nuts'],
+    imageUrl: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=600&auto=format&fit=crop'
   },
   
   // Mains
@@ -80,7 +83,8 @@ export const MENU_ITEMS: MenuItem[] = [
     frenchName: 'Le Saignant d\'Aubrac A5',
     price: 120,
     description: 'Kagoshima beef, smoked bone marrow, celeriac puree, bordelaise sauce.',
-    tags: ['Signature', 'Meat']
+    tags: ['Signature', 'Meat'],
+    imageUrl: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop'
   },
   {
     id: 'plat2',
@@ -89,7 +93,8 @@ export const MENU_ITEMS: MenuItem[] = [
     frenchName: 'Le Turbot Sauvage',
     price: 85,
     description: 'Line-caught, champagne beurre blanc, sea asparagus, lemon zest.',
-    tags: ['Seafood', 'Gluten Free']
+    tags: ['Seafood', 'Gluten Free'],
+    imageUrl: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=600&auto=format&fit=crop'
   },
   {
     id: 'plat3',
@@ -98,7 +103,8 @@ export const MENU_ITEMS: MenuItem[] = [
     frenchName: 'L\'Agneau en Croûte d\'Herbes',
     price: 78,
     description: 'Spring peas, mint pesto, pommes fondant, red wine jus.',
-    tags: ['Meat']
+    tags: ['Meat'],
+    imageUrl: 'https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=600&auto=format&fit=crop'
   },
   
   // Desserts
@@ -109,7 +115,8 @@ export const MENU_ITEMS: MenuItem[] = [
     frenchName: 'Le Soufflé Grand Cru',
     price: 32,
     description: '70% Dark chocolate, Madagascar vanilla bean gelato, fleur de sel.',
-    tags: ['Signature', 'Vegetarian']
+    tags: ['Signature', 'Vegetarian'],
+    imageUrl: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=600&auto=format&fit=crop'
   },
   {
     id: 'des2',
@@ -118,7 +125,8 @@ export const MENU_ITEMS: MenuItem[] = [
     frenchName: 'La Poire Dorée',
     price: 26,
     description: 'Poached in saffron, cardamom soil, ginger snap, white chocolate snow.',
-    tags: ['Vegetarian']
+    tags: ['Vegetarian'],
+    imageUrl: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=600&auto=format&fit=crop'
   },
   {
     id: 'des3',
@@ -127,7 +135,8 @@ export const MENU_ITEMS: MenuItem[] = [
     frenchName: 'La Sélection d\'Affinages',
     price: 38,
     description: 'Selection of regional AOP cheeses, fig chutney, walnut bread.',
-    tags: ['Vegetarian', 'Nuts']
+    tags: ['Vegetarian', 'Nuts'],
+    imageUrl: 'https://images.unsplash.com/photo-1631379578550-7038263db6eb?q=80&w=600&auto=format&fit=crop'
   }
 ];
 
