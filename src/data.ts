@@ -24,21 +24,21 @@ export const SIGNATURE_CREATIONS = [
     name: 'Sea Scallop',
     frenchName: 'L\'Escalope de Mer',
     description: 'Hand-dived, with emerald pea emulsion and winter truffle shavings.',
-    videoUrl: '/videos/sea-scallop.mp4', 
+    imageUrl: '/videos/Sea Scallop.png', 
   },
   {
     id: 'sc2',
     name: 'A5 Wagyu',
     frenchName: 'Le Bœuf Wagyu A5',
     description: 'Miyazaki beef with aged balsamico and heritage carrots.',
-    videoUrl: '/videos/a5-wagyu.mp4',
+    imageUrl: '/videos/A5 Wagyu.png',
   },
   {
     id: 'sc3',
     name: 'Gold Cacao',
     frenchName: 'Le Cacao d\'Or',
     description: '70% single-origin dark chocolate with salted caramel and 24k leaf.',
-    videoUrl: '/videos/gold-cacao.mp4',
+    imageUrl: '/videos/Gold Cacao.png',
   }
 ];
 

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
 import { Clock, Calendar, ChefHat, Compass, Sparkles, ArrowRight, Wine } from 'lucide-react';
 import { SIGNATURE_CREATIONS, HERO_IMAGE } from '../data';
@@ -10,6 +10,13 @@ interface FrontSeatProps {
 export const FrontSeat: React.FC<FrontSeatProps> = ({ onNavigate }) => {
   const [activeCreation, setActiveCreation] = useState(0);
   const containerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setActiveCreation(prev => (prev + 1) % SIGNATURE_CREATIONS.length);
+    }, 4000);
+    return () => clearTimeout(timer);
+  }, [activeCreation]);
 
   // Scroll parallax configurations
   const { scrollYProgress } = useScroll({
@@ -111,20 +118,15 @@ export const FrontSeat: React.FC<FrontSeatProps> = ({ onNavigate }) => {
           >
             <div className="relative h-64 overflow-hidden mb-6 rounded-2xl border border-neutral-850" style={{ perspective: 1000 }}>
               <AnimatePresence mode="wait">
-                <motion.video 
+                <motion.img 
                   key={activeCreation}
-                  src={SIGNATURE_CREATIONS[activeCreation].videoUrl}
-                  autoPlay
-                  muted
-                  playsInline
-                  onEnded={() => {
-                    setActiveCreation(prev => (prev + 1) % SIGNATURE_CREATIONS.length);
-                  }}
-                  className="w-full h-full object-cover grayscale brightness-95 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1.5s] ease-out"
-                  initial={{ opacity: 0, rotateY: 75, scale: 0.92, filter: 'blur(4px)' }}
-                  animate={{ opacity: 1, rotateY: 0, scale: 1, filter: 'blur(0px)' }}
-                  exit={{ opacity: 0, rotateY: -75, scale: 0.92, filter: 'blur(4px)' }}
-                  transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
+                  src={SIGNATURE_CREATIONS[activeCreation].imageUrl}
+                  alt={SIGNATURE_CREATIONS[activeCreation].name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out"
+                  initial={{ opacity: 0, scale: 0.9, filter: 'blur(10px) saturate(0) brightness(0.8)' }}
+                  animate={{ opacity: 1, scale: 1, filter: 'blur(0px) saturate(1) brightness(1)' }}
+                  exit={{ opacity: 0, scale: 1.1, filter: 'blur(10px) saturate(0) brightness(0.8)' }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 />
               </AnimatePresence>
               <div className="absolute top-4 left-4 bg-neutral-900/90 px-3 py-1 text-[10px] text-gold-600 uppercase tracking-widest border border-gold-500/20 font-accent italic">
@@ -160,11 +162,7 @@ export const FrontSeat: React.FC<FrontSeatProps> = ({ onNavigate }) => {
             <div className="grid grid-cols-3 gap-3 mt-6 pt-5 border-t border-neutral-850">
               {SIGNATURE_CREATIONS.map((creation, idx) => {
                 const isActive = activeCreation === idx;
-                const thumbImage = idx === 0 
-                  ? "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=150&auto=format&fit=crop" 
-                  : idx === 1
-                  ? "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=150&auto=format&fit=crop"
-                  : "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=150&auto=format&fit=crop";
+                const thumbImage = creation.imageUrl;
                 
                 return (
                   <button
