@@ -174,7 +174,7 @@ export default function App() {
                 href="https://www.instagram.com/cabbage_code/" 
                 target="_blank" 
                 rel="noreferrer" 
-                className="text-neutral-500 hover:text-gold-500 transition-all duration-300 hover:scale-110 cursor-pointer"
+                className="text-[#E1306C] hover:text-[#d6245c] transition-all duration-300 hover:scale-110 cursor-pointer"
                 title="Instagram"
               >
                 <Instagram className="w-3.5 h-3.5" />
@@ -183,7 +183,7 @@ export default function App() {
                 href="https://www.facebook.com/profile.php?id=61590796371705" 
                 target="_blank" 
                 rel="noreferrer" 
-                className="text-neutral-500 hover:text-gold-500 transition-all duration-300 hover:scale-110 cursor-pointer"
+                className="text-[#1877F2] hover:text-[#166fe5] transition-all duration-300 hover:scale-110 cursor-pointer"
                 title="Facebook"
               >
                 <Facebook className="w-3.5 h-3.5" />
@@ -192,7 +192,7 @@ export default function App() {
                 href="https://www.youtube.com/@SujeetCabbageCode" 
                 target="_blank" 
                 rel="noreferrer" 
-                className="text-neutral-500 hover:text-gold-500 transition-all duration-300 hover:scale-110 cursor-pointer"
+                className="text-[#FF0000] hover:text-[#e60000] transition-all duration-300 hover:scale-110 cursor-pointer"
                 title="YouTube"
               >
                 <Youtube className="w-3.5 h-3.5" />
@@ -201,10 +201,21 @@ export default function App() {
                 href="https://www.linkedin.com/in/sujeet-vishwakarma-a19b2323a" 
                 target="_blank" 
                 rel="noreferrer" 
-                className="text-neutral-500 hover:text-gold-500 transition-all duration-300 hover:scale-110 cursor-pointer"
+                className="text-[#0A66C2] hover:text-[#0955a0] transition-all duration-300 hover:scale-110 cursor-pointer"
                 title="LinkedIn"
               >
                 <Linkedin className="w-3.5 h-3.5" />
+              </a>
+              <a 
+                href="https://wa.me/917800383448" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="text-[#25D366] hover:text-[#20ba5a] transition-all duration-300 hover:scale-110 cursor-pointer"
+                title="WhatsApp"
+              >
+                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.966a9.79 9.79 0 0 0-6.979-2.889c-5.439 0-9.865 4.37-9.87 9.799-.001 1.77.469 3.5 1.36 5.01L1.9 21.75l6.09-1.597zM17.487 14.39c-.3-.15-1.782-.879-2.062-.98-.28-.1-.485-.15-.685.15-.2.3-.775.98-.95 1.18-.175.2-.35.225-.65.075-1.03-.519-1.77-1.002-2.428-1.579-.658-.577-1.126-1.282-1.353-1.68-.225-.4-.025-.615.175-.813.18-.18.4-.465.6-.7.2-.235.265-.4.4-.665.135-.265.066-.5-.033-.7-.1-.2-.875-2.115-1.2-2.902-.315-.765-.64-.66-.875-.672-.225-.01-.485-.012-.745-.012-.26 0-.685.1-1.045.49-.36.39-1.38 1.35-1.38 3.293s1.42 3.82 1.62 4.09c.2.27 2.79 4.26 6.755 5.972.945.41 1.68.65 2.255.83.95.302 1.81.26 2.49.16.76-.11 2.285-.93 2.605-1.83.32-.9 0-.28-.32-1.89-3.23-1.63z" />
+                </svg>
               </a>
             </div>
 
@@ -253,9 +264,9 @@ export default function App() {
             initial={{ opacity: 0, scale: 0.95, y: -10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -10 }}
-            className="fixed top-20 left-4 right-4 bottom-4 z-30 bg-neutral-950/95 backdrop-blur-md border border-neutral-850 p-6 rounded-2xl shadow-xl flex flex-col justify-between"
+            className="fixed top-20 left-4 right-4 bottom-4 z-30 bg-neutral-950/95 backdrop-blur-md border border-neutral-850 p-6 rounded-2xl shadow-xl flex flex-col justify-between overflow-y-auto"
           >
-            <div className="space-y-4 pt-6">
+            <div className="space-y-4 pt-6 shrink-0">
               {navItems.map(item => (
                 <button
                   key={item.id}
@@ -270,7 +281,7 @@ export default function App() {
               ))}
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-6 shrink-0 mt-8">
               <button
                 id="mobile-nav-book"
                 onClick={() => handleNavigate('reservations')}
@@ -285,7 +296,7 @@ export default function App() {
                   href="https://www.instagram.com/cabbage_code/" 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="p-2.5 bg-neutral-900 border border-neutral-800 text-gold-500 hover:text-neutral-200 rounded-full transition-all cursor-pointer animate-fade-in"
+                  className="p-2.5 bg-neutral-900 border border-[#E1306C]/30 text-[#E1306C] hover:border-[#E1306C] hover:bg-[#E1306C]/5 rounded-full transition-all cursor-pointer hover:scale-110 animate-fade-in"
                   title="Instagram"
                 >
                   <Instagram className="w-5 h-5" />
@@ -294,7 +305,7 @@ export default function App() {
                   href="https://www.facebook.com/profile.php?id=61590796371705" 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="p-2.5 bg-neutral-900 border border-neutral-800 text-gold-500 hover:text-neutral-200 rounded-full transition-all cursor-pointer animate-fade-in"
+                  className="p-2.5 bg-neutral-900 border border-[#1877F2]/30 text-[#1877F2] hover:border-[#1877F2] hover:bg-[#1877F2]/5 rounded-full transition-all cursor-pointer hover:scale-110 animate-fade-in"
                   title="Facebook"
                 >
                   <Facebook className="w-5 h-5" />
@@ -303,7 +314,7 @@ export default function App() {
                   href="https://www.youtube.com/@SujeetCabbageCode" 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="p-2.5 bg-neutral-900 border border-neutral-800 text-gold-500 hover:text-neutral-200 rounded-full transition-all cursor-pointer animate-fade-in"
+                  className="p-2.5 bg-neutral-900 border border-[#FF0000]/30 text-[#FF0000] hover:border-[#FF0000] hover:bg-[#FF0000]/5 rounded-full transition-all cursor-pointer hover:scale-110 animate-fade-in"
                   title="YouTube"
                 >
                   <Youtube className="w-5 h-5" />
@@ -312,10 +323,21 @@ export default function App() {
                   href="https://www.linkedin.com/in/sujeet-vishwakarma-a19b2323a" 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="p-2.5 bg-neutral-900 border border-neutral-800 text-gold-500 hover:text-neutral-200 rounded-full transition-all cursor-pointer animate-fade-in"
+                  className="p-2.5 bg-neutral-900 border border-[#0A66C2]/30 text-[#0A66C2] hover:border-[#0A66C2] hover:bg-[#0A66C2]/5 rounded-full transition-all cursor-pointer hover:scale-110 animate-fade-in"
                   title="LinkedIn"
                 >
                   <Linkedin className="w-5 h-5" />
+                </a>
+                <a 
+                  href="https://wa.me/917800383448" 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="p-2.5 bg-neutral-900 border border-[#25D366]/30 text-[#25D366] hover:border-[#25D366] hover:bg-[#25D366]/5 rounded-full transition-all cursor-pointer hover:scale-110 animate-fade-in"
+                  title="WhatsApp"
+                >
+                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.966a9.79 9.79 0 0 0-6.979-2.889c-5.439 0-9.865 4.37-9.87 9.799-.001 1.77.469 3.5 1.36 5.01L1.9 21.75l6.09-1.597zM17.487 14.39c-.3-.15-1.782-.879-2.062-.98-.28-.1-.485-.15-.685.15-.2.3-.775.98-.95 1.18-.175.2-.35.225-.65.075-1.03-.519-1.77-1.002-2.428-1.579-.658-.577-1.126-1.282-1.353-1.68-.225-.4-.025-.615.175-.813.18-.18.4-.465.6-.7.2-.235.265-.4.4-.665.135-.265.066-.5-.033-.7-.1-.2-.875-2.115-1.2-2.902-.315-.765-.64-.66-.875-.672-.225-.01-.485-.012-.745-.012-.26 0-.685.1-1.045.49-.36.39-1.38 1.35-1.38 3.293s1.42 3.82 1.62 4.09c.2.27 2.79 4.26 6.755 5.972.945.41 1.68.65 2.255.83.95.302 1.81.26 2.49.16.76-.11 2.285-.93 2.605-1.83.32-.9 0-.28-.32-1.89-3.23-1.63z" />
+                  </svg>
                 </a>
               </div>
             </div>
@@ -439,7 +461,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 items-start">
           
           {/* Brand Col */}
-          <div className="lg:col-span-4 space-y-5">
+          <div className="lg:col-span-3 space-y-5">
             <h3 className="text-neutral-200 font-serif text-2xl tracking-[0.2em] font-bold">L'ÉCLAT</h3>
             <span className="text-[9px] text-gold-500 font-sans font-semibold uppercase tracking-widest block">HAUTE PARISIENNE COOKERY</span>
             <p className="text-neutral-500 text-xs font-sans font-normal leading-relaxed max-w-sm">
@@ -460,7 +482,7 @@ export default function App() {
                 href="https://www.instagram.com/cabbage_code/" 
                 target="_blank" 
                 rel="noreferrer" 
-                className="p-2.5 bg-neutral-900 border border-neutral-850 text-neutral-500 hover:text-gold-500 hover:border-gold-500 rounded-full transition-all cursor-pointer hover:scale-110"
+                className="p-2.5 bg-neutral-900 border border-[#E1306C]/30 text-[#E1306C] hover:border-[#E1306C] hover:bg-[#E1306C]/5 rounded-full transition-all cursor-pointer hover:scale-110"
                 title="Instagram"
               >
                 <Instagram className="w-4 h-4" />
@@ -469,7 +491,7 @@ export default function App() {
                 href="https://www.facebook.com/profile.php?id=61590796371705" 
                 target="_blank" 
                 rel="noreferrer" 
-                className="p-2.5 bg-neutral-900 border border-neutral-850 text-neutral-500 hover:text-gold-500 hover:border-gold-500 rounded-full transition-all cursor-pointer hover:scale-110"
+                className="p-2.5 bg-neutral-900 border border-[#1877F2]/30 text-[#1877F2] hover:border-[#1877F2] hover:bg-[#1877F2]/5 rounded-full transition-all cursor-pointer hover:scale-110"
                 title="Facebook"
               >
                 <Facebook className="w-4 h-4" />
@@ -478,7 +500,7 @@ export default function App() {
                 href="https://www.youtube.com/@SujeetCabbageCode" 
                 target="_blank" 
                 rel="noreferrer" 
-                className="p-2.5 bg-neutral-900 border border-neutral-850 text-neutral-500 hover:text-gold-500 hover:border-gold-500 rounded-full transition-all cursor-pointer hover:scale-110"
+                className="p-2.5 bg-neutral-900 border border-[#FF0000]/30 text-[#FF0000] hover:border-[#FF0000] hover:bg-[#FF0000]/5 rounded-full transition-all cursor-pointer hover:scale-110"
                 title="YouTube"
               >
                 <Youtube className="w-4 h-4" />
@@ -487,10 +509,21 @@ export default function App() {
                 href="https://www.linkedin.com/in/sujeet-vishwakarma-a19b2323a" 
                 target="_blank" 
                 rel="noreferrer" 
-                className="p-2.5 bg-neutral-900 border border-neutral-850 text-neutral-500 hover:text-gold-500 hover:border-gold-500 rounded-full transition-all cursor-pointer hover:scale-110"
+                className="p-2.5 bg-neutral-900 border border-[#0A66C2]/30 text-[#0A66C2] hover:border-[#0A66C2] hover:bg-[#0A66C2]/5 rounded-full transition-all cursor-pointer hover:scale-110"
                 title="LinkedIn"
               >
                 <Linkedin className="w-4 h-4" />
+              </a>
+              <a 
+                href="https://wa.me/917800383448" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="p-2.5 bg-neutral-900 border border-[#25D366]/30 text-[#25D366] hover:border-[#25D366] hover:bg-[#25D366]/5 rounded-full transition-all cursor-pointer hover:scale-110"
+                title="WhatsApp"
+              >
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.966a9.79 9.79 0 0 0-6.979-2.889c-5.439 0-9.865 4.37-9.87 9.799-.001 1.77.469 3.5 1.36 5.01L1.9 21.75l6.09-1.597zM17.487 14.39c-.3-.15-1.782-.879-2.062-.98-.28-.1-.485-.15-.685.15-.2.3-.775.98-.95 1.18-.175.2-.35.225-.65.075-1.03-.519-1.77-1.002-2.428-1.579-.658-.577-1.126-1.282-1.353-1.68-.225-.4-.025-.615.175-.813.18-.18.4-.465.6-.7.2-.235.265-.4.4-.665.135-.265.066-.5-.033-.7-.1-.2-.875-2.115-1.2-2.902-.315-.765-.64-.66-.875-.672-.225-.01-.485-.012-.745-.012-.26 0-.685.1-1.045.49-.36.39-1.38 1.35-1.38 3.293s1.42 3.82 1.62 4.09c.2.27 2.79 4.26 6.755 5.972.945.41 1.68.65 2.255.83.95.302 1.81.26 2.49.16.76-.11 2.285-.93 2.605-1.83.32-.9 0-.28-.32-1.89-3.23-1.63z" />
+                </svg>
               </a>
             </div>
           </div>
@@ -513,7 +546,7 @@ export default function App() {
           </div>
 
           {/* Contact and address Col */}
-          <div className="lg:col-span-3 space-y-4 text-xs font-sans font-medium text-neutral-500">
+          <div className="lg:col-span-2 space-y-4 text-xs font-sans font-medium text-neutral-500">
             <h4 className="text-xs text-neutral-200 uppercase tracking-widest font-mono font-bold border-b border-neutral-850 pb-2">Bespoke Concierge</h4>
             
             <div className="flex items-start gap-3 pt-1">
@@ -535,16 +568,48 @@ export default function App() {
           {/* Paris Map Area indicator */}
           <div className="lg:col-span-3 space-y-4">
             <h4 className="text-xs text-neutral-200 uppercase tracking-widest font-mono font-bold border-b border-neutral-850 pb-2">Le Marais Location</h4>
-            <div className="relative h-36 overflow-hidden bg-neutral-950 border border-neutral-850 rounded-xl group shadow-sm">
-              <img 
-                src={MAP_IMAGE} 
-                alt="Map locating Place des Vosges in the heart of Paris Le Marais" 
-                className="w-full h-full object-cover grayscale contrast-[1.1] hover:grayscale-0 transition-all duration-[1s] cursor-pointer"
+            <div className="relative h-48 overflow-hidden bg-neutral-950 border border-neutral-850 rounded-xl group shadow-sm">
+              <iframe 
+                src="https://maps.google.com/maps?q=Place%20des%20Vosges,%20Paris,%20France&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen={true}
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full grayscale contrast-[1.1] hover:grayscale-0 transition-all duration-700"
+                title="Google Map of Place des Vosges, Paris, France"
               />
-              <div className="absolute inset-0 bg-neutral-950/10 pointer-events-none" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none">
-                <div className="w-3 h-3 bg-gold-400 rounded-full animate-ping absolute" />
-                <div className="w-3.5 h-3.5 bg-gold-500 rounded-full border-2 border-neutral-950 z-10" />
+            </div>
+          </div>
+
+          {/* Portfolio QR Code Col */}
+          <div className="lg:col-span-2 space-y-4">
+            <h4 className="text-xs text-neutral-200 uppercase tracking-widest font-mono font-bold border-b border-neutral-850 pb-2">Developer Portfolio</h4>
+            <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4 items-start">
+              <div className="qr-scanner-container w-28 h-28 shrink-0 bg-neutral-900 border border-neutral-850 p-2 rounded-xl group hover:border-gold-500/50 hover:shadow-[0_0_15px_rgba(251,176,59,0.25)] transition-all duration-300">
+                <div className="qr-scan-line" />
+                <img 
+                  src="/videos/QR.png" 
+                  alt="Developer Portfolio QR Code" 
+                  className="w-full h-full object-cover rounded-lg transition-transform duration-500 ease-out group-hover:scale-105"
+                />
+              </div>
+              <div className="space-y-2.5">
+                <p className="text-neutral-550 text-[11px] font-sans font-normal leading-relaxed">
+                  Scan to view my portfolio or reach out for custom development.
+                </p>
+                <div className="flex flex-col gap-1.5 pt-0.5">
+                  <a 
+                    href="https://www.linkedin.com/in/sujeet-vishwakarma-a19b2323a" 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 text-[10px] font-semibold text-gold-500 hover:text-gold-600 transition-colors uppercase tracking-widest group/link"
+                  >
+                    Visit Website 
+                    <Sparkles className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:scale-110" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
